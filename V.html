@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will You Be My Valentine?</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        overflow: hidden;
+      }
+      h1 {
+        margin-top: 50px;
+      }
+      #button-container {
+        margin-top: 20px;
+      }
+      button {
+        font-size: 18px;
+        padding: 10px 20px;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      #yes-button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        width: auto;
+        height: auto;
+      }
+      #no-button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="./Asset/pokemon-pikachu-will-you-be-my-valentine-p6pjjlhcdeki4xrw.gif"
+      alt=""
+    />
+    <h1>Will You Be My Valentine?</h1>
+
+    <div id="button-container">
+      <button id="yes-button">Yes</button>
+      <button id="no-button">No</button>
+    </div>
+
+    <script>
+      const yesButton = document.getElementById("yes-button");
+      const noButton = document.getElementById("no-button");
+      let fontSize = 18;
+      let increaseRate = 5;
+      let noClickCount = 0;
+      let yesClickCount = 0;
+
+      noButton.addEventListener("click", function () {
+        noClickCount++;
+        let fontSize = window
+          .getComputedStyle(yesButton)
+          .getPropertyValue("font-size");
+        fontSize = parseFloat(fontSize);
+        fontSize += 2; // Increase font size by 2px each time 'No' button is clicked
+        yesButton.style.fontSize = fontSize + "px";
+        switch (noClickCount) {
+          case 1:
+            noButton.textContent = "Please";
+            break;
+          case 2:
+            noButton.textContent = "It will break my heart 😖";
+            break;
+          case 3:
+            noButton.textContent = "Please give me a chance 😓";
+            break;
+          case 4:
+            noButton.textContent = "Are you sure about that? 😢";
+            break;
+          case 5:
+            noButton.textContent = "But I love you ❤️";
+            break;
+          case 6:
+            noButton.textContent = "Please";
+            break;
+          case 7:
+            noButton.style.display = "none";
+            const message = document.createElement("p");
+            message.textContent = "You have to say yes 😡";
+            message.style.color = "#ff0000";
+            document.getElementById("button-container").appendChild(message);
+            break;
+          default:
+            break;
+        }
+      });
+      yesButton.addEventListener("click", function () {
+        window.location.href = "./Asset/love.html";
+      });
+    </script>
+  </body>
+</html>
